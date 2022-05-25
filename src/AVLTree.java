@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-
-public class BinarySearchTree<T extends Comparable<T>> {
-
+public class AVLTree<T extends Comparable<T>> {
     public BinaryTreeNode<T> head;
     private int count = 0;
 
@@ -15,12 +12,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public int balance = 0; // - = extra left; + = extra right
 
-    BinarySearchTree(T value) {
+    AVLTree(T value) {
         this.head = new BinaryTreeNode<>(value);
         count++;
     }
 
-    BinarySearchTree() {
+    AVLTree() {
 
     }
 
@@ -36,28 +33,9 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         int bal = head.set(value);
         count++;
-
-//        BinaryTreeNode<T> temp = head;
-//        System.out.println("Old Head: " + head.toString());
-//        if (bal < 0) {
-//            if(head.left.left == null && head.left.right == null) return; //Long-winded "If head.left used to be null"
-//            head = head.left;
-//            head.right = null;
-//            //head.right = temp;
-//        } else {
-//            if(head.right.left == null && head.right.right == null) return;
-//
-//            head = head.right;
-//            temp.right = null;
-//            //head.left = temp;
-//        }
-//        System.out.println("New Head: " + head.toString());
-//        System.out.println(" ");
-
         balance += bal;
     }
 
-    //This claims it always returns false but it shouldn't
     public boolean contains(T value) {
         if(head == null) return false;
 
@@ -107,6 +85,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return 0;
     }
 
+    //TODO: Have array return Breadth-First rather than inorder
     public Object[] toArray() {
         Object[] arr = new Object[count];
 
@@ -181,5 +160,4 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
         return out;
     }
-
 }
